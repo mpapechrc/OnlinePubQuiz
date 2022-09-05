@@ -6,24 +6,89 @@
 <meta name="description" content="Our first page">
 <meta name="keywords" content="html tutorial template">
 <style>
-    .content {
-        width: 350px;
-        margin: auto;
+    body{
+        background-image: url('image_processing20190912-10801-18h98g3.gif');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-color: rgba(0, 128, 53, 0.432);
+        font-family: "Lucida Console";
+        border-style: solid;
+        border-radius: 20px;
+        height: 915px;
     }
-    h1 {
-        font-size: 36px;
+    .pagehead{
+        text-align: center;
+        font-size: 35px;
+        border-style: solid;
+        border-color: rgb(0, 0, 0);
+        border-radius: 20px;
+        margin: 10px;
+    }
+    .content{
+        border-style: solid;
+        border-color: black;
+        border-radius: 20px;
+        margin: 10px;
+        display: flex;
+    }
+    .content>div{
+        text-align: center;
+        width: 33%;
+        border-style: solid;
+        border-color: black;
+        border-radius: 20px;
+        margin: 10px;
+    }
+    input{
+        text-align: center;
+        border-radius: 20px;
+        border-color: yellow;
+        background-color: rgb(0, 128, 53);
+        width: 100%;
+        height: 45px;
+        font-size: 30px;
+    }
+    button{
+        background-color: rgb(0, 128, 53);
+        border-radius: 20px;
+        border-style: solid;
+        border-color: yellow;
+        width: 100%;
+        height: 45px;
+        font-size: 20px;
+        box-shadow: 0 10px yellow;
+    }
+    button:hover{
+       background-color: rgb(180, 180, 48);
+    }
+    button:active{
+        transform: translateY(4px);
+        box-shadow: 0 6px yellow;
     }
 </style>
 </head>
 <body>
-    <div class="content">
-        <h1 id="title">Pitanje 2</h1>
-        <p  id="box" class="quizInfo">
-           <p>Koliko je 4 + 4?</p>
-        </p>
-        <p id="answ">Odgovor</p>
+    <div>
+        <div class="pagehead">
+            Math Quiz
+        </div>
+        <div class="content">
+            <div>
+            </div>
+            <div>
+                <h1 id="title">Pitanje 2</h1>
+                <p  id="box" class="quizInfo">
+                <p>Koliko je 4 + 4?</p>
+                <p id="answ">Odgovor</p>
+                <div>
+                    <input type="number" name="answer" id="answer">
+                </div>
+            </div>
+            <div>
 
-    </div>
+            </div>
+        </div>
+    </div> 
 </body>
 <script>
 </script>
