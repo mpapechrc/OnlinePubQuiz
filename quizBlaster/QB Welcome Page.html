@@ -5,47 +5,72 @@
     <link rel="icon" type="image/x-icon" href="C:\Users\MilivojPapec\Desktop\dev\unchained\quizBlaster\mathQuiz\favicon (1).ico">
 <style>
     body{
-        background-image: url('gate.jpg');
+        background-image: url('image_processing20190912-10801-18h98g3.gif');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         background-color: rgba(0, 128, 53, 0.432);
-        font-family: "Papyrus";
+        font-family: "Lucida Console";
         border-style: solid;
         border-radius: 20px;
         height: 915px;
     }
     .enterMessage{
         text-align: center;
-        border-style: solid;
+        font-size: 35px;
+        /*border-style: solid;
         border-color: rgb(0, 0, 0);
-        border-radius: 20px;
-        margin: 160px 10px 10px 10px;
+        border-radius: 20px;*/
+        margin: 10px;
     }
     .content{
-        border-style: solid;
+       /*border-style: solid;
         border-color: black;
-        border-radius: 20px;
-        margin: 10px;
+        border-radius: 20px;*/
+        margin-top: 150px;
     }
     .credentials{
         text-align: center;
-        border-style: solid;
+        /*border-style: solid;
         border-color: rgb(0, 0, 0);
-        border-radius: 20px;
+        border-radius: 20px;*/
         margin: 10px;
     }
     .credentials>div{
         text-align: center;
+       /* border-style: solid;
+        border-color: rgb(0, 0, 0);
+        border-radius: 20px;*/
+        margin: 10px;
+        font-size: 20px;
     }
     input{
+        text-align: center;
         border-radius: 20px;
+        border-color: yellow;
+        background-color: rgb(0, 128, 53);
         width: 20%;
+        height: 45px;
+        font-size: 30px;
     }
+    
     button{
-        background-color: rgba(0, 128, 53, 0.432);
+        background-color: rgb(0, 128, 53);
         border-radius: 20px;
         border-style: solid;
-        border-color: rgb(19, 150, 202);
+        border-color: yellow;
+        width: 20%;
+        height: 45px;
+        font-family: "Lucida Console";
+        font-size: 20px;
+        box-shadow: 0 10px yellow;
+        margin-top: 20px;
+    }
+    button:hover{
+       background-color: rgb(180, 180, 48);
+    }
+    button:active{
+        transform: translateY(4px);
+        box-shadow: 0 6px yellow;
     }
 </style>
 </head>
@@ -55,12 +80,19 @@
     </div>
     <div class="content">
         <div class="credentials">
-            <div><p><b>Enter Your Blast Name</b></p></div>
-            <div><input id="name" type="text"></div>
-            <div><p><b>Enter Your Secret Blast Word</b></p></div>
-            <div><input id="pass" type="text"></div>
             <div>
-                <button id="blaster" type="button" onclick="window.location='QB Menu.html';">Let's Blast</button>
+                <p><b>Enter Your Blast Name</b></p>
+            </div>
+            <div>
+                <input id="name" type="text">
+            </div>
+            <div>
+                <p><b>Enter Your Secret Blast Word</b></p>
+            </div>
+            <div>
+                <input  type="password" id="pass" type="text"></div>
+            <div>
+                <button id="blaster" type="button" onclick="window.location='QB Menu.html';"><b>Let's Blast</b></button>
             </div>  
         </div>
     </div>
