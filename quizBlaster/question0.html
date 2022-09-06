@@ -22,18 +22,17 @@
                 <p id="answ">Odgovor</p>
                 <div>
                     <form name="qForm" action="" onsubmit="return validate()">
-                        Name: <input type="text" name="answer">
-                        <input type="submit" value="Blast It">
+                        <input type="text" name="answer">
+                        <button type="submit">Blast It</button>
                     </form>
                 </div>
+                <div id="message" class="message">
+                </div>
+                <button disabled="true" id="nextQ" type="button" onclick="nextQ()">Go Further And Beyond</button>
             </div>
             <div>
             </div>
         </div>
-    </div> 
-    <div style="font-size: 100px ;" id="message" class="message">
-    
-    </div>
 </body>
 <script>
 function validate() {
@@ -48,8 +47,13 @@ function validate() {
     document.getElementById("message").innerHTML = messagetxt[getRandomInt(3)]
     return false;
   } else{
-    window.open("mq-goodbye-page.html")
+    document.getElementById("nextQ").disabled=false;
+    document.getElementById("message").innerHTML = "You Blasted It"
+    return false;
   }
+}
+function nextQ(){
+window.open("mq-goodbye-page.html","_self")
 }
 </script>
 </html>

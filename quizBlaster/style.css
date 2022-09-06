@@ -63,4 +63,8 @@ button:active{
     text-align: center;
     border-style: solid;
     border-radius: 20px;
+    margin: 10px;
+    font-size: 50px;
+    padding: 10px;
+    
 }
