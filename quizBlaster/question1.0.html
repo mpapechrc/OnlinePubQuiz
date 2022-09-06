@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<title>Math Quiz</title>
+<link rel="icon" type="image/x-icon" href="favicon (1).ico">
+<link rel="stylesheet" href="style.css">
+<style>
+</style>
+</head>
+<body>
+  <div>
+    <div class="pagehead">Math Quiz</div>
+    <div class="content">
+      <div></div>
+      <div>
+        <div id="question-number">Pitanje 1</div>
+        <div id="question">test pitanje</div>
+        <div id="answer">Odgovor</div>
+        <div>
+          <form name="answer-form" action="" onsubmit="return nextQuestion()">
+            <input type="number" name="answer">
+            <button type="submit">Blast It</button>
+          </form>
+        </div>
+        <div id="message" class="message"></div>
+        <button disabled="true" id="nextQ" type="button" onclick="">Go Further And Beyond</button>
+        </div>
+     <div id="question"></div>
+    </div>
+  </div>
+</body>
+<script>
+const quiz={
+  name:"Math Quiz",
+  questions:[
+    {question:"Koliko ruka ima prstiju?",correctAnswer:"5"},
+    {question:"Koliko tjedan ima dana?",correctAnswer:"7"},
+    {question:"Napiši broj veći od 3 a manje od 5!",correctAnswer:"4"}
+  ]
+}
+
+function nextQuestion(){
+for (let i=0;i<3;i++)
+document.getElementById("question").innerHTML = quiz.questions[i].question
+return false;
+}
+
+
+</script>
+</html>
