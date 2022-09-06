@@ -21,7 +21,7 @@
                 <p>Koliko je 4 + 4?</p>
                 <p id="answ">Odgovor</p>
                 <div>
-                    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()">
+                    <form name="qForm" action="" onsubmit="return validate()">
                         Name: <input type="text" name="answer">
                         <input type="submit" value="Blast It">
                     </form>
@@ -31,13 +31,24 @@
             </div>
         </div>
     </div> 
+    <div style="font-size: 100px ;" id="message" class="message">
+    
+    </div>
 </body>
 <script>
-function validateForm() {
-  let x = document.forms["myForm"]["answer"].value;
-  if (x !== "4") {
-    alert("Name must be filled out");
+function validate() {
+  let result = document.forms["qForm"]["answer"].value;
+  let messagetxt = [ "You can do it","Try Again","C'mno Dude","Think Faster","Don't Be So Lame"]
+
+  function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+  if (result !== "8") {
+    document.getElementById("message").innerHTML = messagetxt[getRandomInt(3)]
     return false;
+  } else{
+    window.open("mq-goodbye-page.html")
   }
 }
 </script>
