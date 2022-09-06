@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Igraj Kviz</title>
+<title>Math Quiz</title>
 <link rel="icon" type="image/x-icon" href="favicon (1).ico">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -21,15 +21,24 @@
                 <p>Koliko je 4 + 4?</p>
                 <p id="answ">Odgovor</p>
                 <div>
-                    <input type="number" name="answer" id="answer">
+                    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()">
+                        Name: <input type="text" name="answer">
+                        <input type="submit" value="Blast It">
+                    </form>
                 </div>
             </div>
             <div>
-
             </div>
         </div>
     </div> 
 </body>
 <script>
+function validateForm() {
+  let x = document.forms["myForm"]["answer"].value;
+  if (x !== "4") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
 </script>
 </html>
