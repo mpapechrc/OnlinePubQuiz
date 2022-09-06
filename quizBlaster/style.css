@@ -1,12 +1,11 @@
 body{
     background-image: url('image_processing20190912-10801-18h98g3.gif');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% ;
     background-color: rgba(0, 128, 53, 0.432);
     font-family: "Lucida Console";
     border-style: solid;
     border-radius: 20px;
-    height: 915px;
 }
 .pagehead{
     text-align: center;
