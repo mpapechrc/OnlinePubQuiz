@@ -46,7 +46,8 @@ function nextQuestion(){
 
   currentQuestionIndex++;
   if(currentQuestionIndex===3){
-    window.open('mq-goodbye-page.html')
+    window.open("mq-goodbye-page.html","_self")
+    return false;
   }else{
   document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
   document.getElementById("question-number").innerHTML= "Pitanje" + currentQuestionIndex
