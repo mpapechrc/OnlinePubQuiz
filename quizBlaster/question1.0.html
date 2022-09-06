@@ -49,6 +49,7 @@ function nextQuestion(){
     window.open('mq-goodbye-page.html')
   }else{
   document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
+  document.getElementById("question-number").innerHTML= "Pitanje" + currentQuestionIndex
   return false;
   }
 }
