@@ -39,10 +39,14 @@ const quiz={
   ]
 }
 
+let currentQuestionIndex = -1;
+nextQuestion();
+
 function nextQuestion(){
-for (let i=0;i<3;i++)
-document.getElementById("question").innerHTML = quiz.questions[i].question
-return false;
+
+  currentQuestionIndex++;
+  document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
+  return false;
 }
 
 
