@@ -25,7 +25,7 @@
         <div id="message" class="message"></div>
         <button disabled="true" id="nextQ" type="button" onclick="">Go Further And Beyond</button>
         </div>
-     <div id="question"></div>
+     <div id="3"></div>
     </div>
   </div>
 </body>
@@ -45,8 +45,12 @@ nextQuestion();
 function nextQuestion(){
 
   currentQuestionIndex++;
+  if(currentQuestionIndex===3){
+    window.open('mq-goodbye-page.html')
+  }else{
   document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
   return false;
+  }
 }
 
 
