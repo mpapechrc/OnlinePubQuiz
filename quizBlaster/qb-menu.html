@@ -8,12 +8,10 @@
 </style>
 </head>
 <body>
-<div class="pagehead">
-    <h1>Welcome to the QuizBlaster</h1>
-</div>
+<div id="pagehead" class="pagehead"></div>
 <div class="content">
     <div>
-       <button id="blaster" type="button" onclick="window.location='mq-welcome-page.html';"><b>Math Quiz</b></button>
+       <button id="blaster" type="button" onclick="window.location='mq-welcome-page.html?user='+user;"><b>Math Quiz</b></button>
     </div>
     <div>
         <button id="blaster" type="button" onclick="window.location='';"><b>Yes/No Quiz</b></button>
@@ -24,6 +22,10 @@
 </div>
 </body>
 <script>
+ const queryString = window.location.search;
+ const urlParams = new URLSearchParams(queryString);
+ const user = urlParams.get('user')
+ document.getElementById("pagehead").innerHTML = user + " Welcome To The QuizBlaster"
  
 </script>
 </html> 

@@ -8,20 +8,17 @@
 </style>
 </head>
 <body>
-    <div class="pagehead">
-        Welcome To The<br>Math Quiz</h1>
-    </div>
+    <div id="pagehead" class="pagehead"></div>
     <div class="content">
         <div>
         </div>
         <div>
            <div>
-            <h1>Welcome To The<br>Math Quiz</h1>
             <p><b>QuizMaker:</b>Unknown</p>
             <p><b>Number Of Question's:</b>2</p>
            </div>
             <div>
-                <button id="blaster" type="button" onclick="window.location='question1.0.html';"><b>Let's Blast</b></button>
+                <button id="blaster" type="button" onclick="window.location='question1.0.html?user='+user;"><b>Let's Blast</b></button>
             </div>
         </d iv>
     </div>
@@ -29,5 +26,9 @@
     </div>
 </body>
 <script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const user = urlParams.get('user')
+  document.getElementById("pagehead").innerHTML = user + " Welcome To The Math Quiz"
 </script>
 </html>

@@ -28,13 +28,18 @@
                 <input  type="password" id="pass" type="text">
             </div>
             <div>
-                <button id="blaster" type="button" onclick="window.location='qb-menu.html';"><b>Let's Blast</b></button>
+                <button id="blaster" type="button" onclick="user()"><b>Let's Blast</b></button>
             </div>  
         </div>
         <div>
         </div>
     </div>
 </body>
-<script>    
+<script>
+ 
+ function user(){
+    let x = document.getElementById("name").value
+    window.open("qb-menu.html?user="+x,"_self")
+ }
 </script>
 </html> 
