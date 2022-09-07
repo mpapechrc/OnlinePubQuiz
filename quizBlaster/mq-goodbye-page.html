@@ -27,6 +27,7 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const score = urlParams.get('score')
+const user = urlParams.get('user')
 
 const goodbyeMessage = {
     messages:[
@@ -39,7 +40,7 @@ const goodbyeMessage = {
 showScore();
 
 function btmenu(){
- window.open("qb-menu.html","_self")
+ window.open("qb-menu.html?user="+user,"_self")
 }
 function showScore(){
 document.getElementById("score").innerHTML = "Your Score Is "+score;
