@@ -53,7 +53,7 @@ function nextQuestion(){
   currentQuestionIndex++;
   let currentQuestionDisplay = currentQuestionIndex +1;
   if(currentQuestionIndex===quiz.questions.length){
-    window.open("mq-goodbye-page.html?"+score,"_self")
+    window.open("mq-goodbye-page.html?score="+score,"_self")
     return false;
   }
   document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
