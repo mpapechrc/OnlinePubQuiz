@@ -16,22 +16,36 @@
             <div></div>
             <div>
                 <div class="score" id="score"></div>
+                <div class="message" id="goodbyeMessage"></div>
                 <div><button id="btmenu" type="button" onclick="btmenu()">Go Back To Menu</button></div>
             </div>
-            <div></div>
+            <div id="3"></div>
         </div>
     </div>
 </body>
 <script>
-let url = window.location.href;
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const score = urlParams.get('score')
+
+const goodbyeMessage = {
+    messages:[
+        {score:"0",message:"Bad"},
+        {score:"1",message:"Okay"},
+        {score:"2",message:"Good"},
+        {score:"3",message:"Great"}
+    ]
+}
 showScore();
 
 function btmenu(){
  window.open("qb-menu.html","_self")
 }
 function showScore(){
- let len = url.length
- document.getElementById("score").innerHTML = "Your Score Is " + url.slice(len-1,)
+document.getElementById("score").innerHTML = "Your Score Is "+score;
+document.getElementById("goodbyeMessage").innerHTML = goodbyeMessage.messages[score].message;
+return false
+
 }
     
 </script>
