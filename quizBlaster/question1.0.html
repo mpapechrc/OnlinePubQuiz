@@ -40,19 +40,33 @@ const quiz={
 }
 
 let currentQuestionIndex = -1;
+let score = 0;
 nextQuestion();
+scoreTracker();
 
 function nextQuestion(){
 
   currentQuestionIndex++;
+  let currentQuestionDisplay = currentQuestionIndex +1;
+  let result = document.forms["answer-form"]["answer"].value
   if(currentQuestionIndex===3){
     window.open("mq-goodbye-page.html","_self")
     return false;
   }else{
-  document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
-  document.getElementById("question-number").innerHTML= "Pitanje" + currentQuestionIndex
+    document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
+    document.getElementById("question-number").innerHTML= "Pitanje" + currentQuestionDisplay
   return false;
   }
+}
+function scoreTracker(){
+  question = quiz.questions[currentQuestionIndex].question
+  answer = document.forms["answer-form"]["answer"].value;
+  if ((answer !== "8")||(answer !== "7")||(answer !== "4")) {
+    return false;
+  } else{
+    score++
+  }
+  document.getElementById("3").innerHTML = score; 
 }
 
 
