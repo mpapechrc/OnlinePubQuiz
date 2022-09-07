@@ -30,7 +30,8 @@ function btmenu(){
  window.open("qb-menu.html","_self")
 }
 function showScore(){
- document.getElementById("score").innerHTML = "Your Score Is "+url.replace("http://127.0.0.1:5500/quizBlaster/mq-goodbye-page.html?","");
+ let len = url.length
+ document.getElementById("score").innerHTML = "Your Score Is " + url.slice(len-1,)
 }
     
 </script>
