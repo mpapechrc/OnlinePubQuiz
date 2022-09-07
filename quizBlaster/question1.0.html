@@ -42,7 +42,7 @@ const quiz={
 let currentQuestionIndex = -1;
 let score = 0;
 nextQuestion();
-scoreTracker();
+
 
 function nextQuestion(){
 
@@ -59,14 +59,15 @@ function nextQuestion(){
   }
 }
 function scoreTracker(){
-  question = quiz.questions[currentQuestionIndex].question
+
   answer = document.forms["answer-form"]["answer"].value;
-  if ((answer !== "8")||(answer !== "7")||(answer !== "4")) {
+  if (y === "8"||y === "7"||y === "4") {
+    score++
     return false;
   } else{
-    score++
+    return false; /*ovde se mislin da bi tribalo stavit return nextQuetion(),
+                   ka ako je odgovor kriv i ako se score nije poveca da nastavi sa iducin pitanjen*/
   }
-  document.getElementById("3").innerHTML = score; 
 }
 
 
