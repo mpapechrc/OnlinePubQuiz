@@ -17,9 +17,9 @@
         <div id="question">test pitanje</div>
         <div id="answer">Odgovor</div>
         <div>
-          <form name="answer-form" action="" onsubmit="return nextQuestion()">
-            <input type="number" name="answer">
-            <button type="submit">Blast It</button>
+          <form name="answer-form" action="" onsubmit="return submitAnswer()">
+            <input id="answerInput" type="number" name="answer">
+            <button id="button" type="submit">Blast It</button>
           </form>
         </div>
         <div id="message" class="message"></div>
@@ -42,31 +42,32 @@ const quiz={
 let currentQuestionIndex = -1;
 let score = 0;
 nextQuestion();
-scoreTracker();
+
+function submitAnswer() {
+  scoreTracker()
+  nextQuestion()
+  return false
+}
 
 function nextQuestion(){
-
   currentQuestionIndex++;
   let currentQuestionDisplay = currentQuestionIndex +1;
-  let result = document.forms["answer-form"]["answer"].value
-  if(currentQuestionIndex===3){
-    window.open("mq-goodbye-page.html","_self")
+  if(currentQuestionIndex===quiz.questions.length){
+    window.open("mq-goodbye-page.html?"+score,"_self")
     return false;
-  }else{
-    document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
-    document.getElementById("question-number").innerHTML= "Pitanje" + currentQuestionDisplay
-  return false;
   }
+  document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
+  document.getElementById("question-number").innerHTML= "Pitanje " + currentQuestionDisplay
+  document.getElementById("answerInput").value = "";
 }
+
 function scoreTracker(){
-  question = quiz.questions[currentQuestionIndex].question
-  answer = document.forms["answer-form"]["answer"].value;
-  if ((answer !== "8")||(answer !== "7")||(answer !== "4")) {
-    return false;
-  } else{
+  let userAnswer = document.getElementById("answerInput").value
+  let correctAnswer = quiz.questions[currentQuestionIndex].correctAnswer
+  if (userAnswer === correctAnswer) {
     score++
   }
-  document.getElementById("3").innerHTML = score; 
+  document.getElementById("message").innerHTML= "Broj bodova " + score
 }
 
 
