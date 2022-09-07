@@ -19,7 +19,7 @@
         <div>
           <form name="answer-form" action="" onsubmit="return submitAnswer()">
             <input id="answerInput" type="number" name="answer">
-            <button type="submit">Blast It</button>
+            <button id="button" type="submit">Blast It</button>
           </form>
         </div>
         <div id="message" class="message"></div>
@@ -53,11 +53,12 @@ function nextQuestion(){
   currentQuestionIndex++;
   let currentQuestionDisplay = currentQuestionIndex +1;
   if(currentQuestionIndex===quiz.questions.length){
-    window.open("mq-goodbye-page.html","_self")
+    window.open("mq-goodbye-page.html?"+score,"_self")
     return false;
   }
   document.getElementById("question").innerHTML = quiz.questions[currentQuestionIndex].question
   document.getElementById("question-number").innerHTML= "Pitanje " + currentQuestionDisplay
+  document.getElementById("answerInput").value = "";
 }
 
 function scoreTracker(){

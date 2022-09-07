@@ -15,15 +15,23 @@
         <div class="content">
             <div></div>
             <div>
-                <button id="btmenu" type="button" onclick="btmenu()">Go Back To Menu</button>
+                <div class="score" id="score"></div>
+                <div><button id="btmenu" type="button" onclick="btmenu()">Go Back To Menu</button></div>
             </div>
             <div></div>
         </div>
     </div>
 </body>
 <script>
-    function btmenu(){
-        window.open("qb-menu.html","_self")
-    }
+let url = window.location.href;
+showScore();
+
+function btmenu(){
+ window.open("qb-menu.html","_self")
+}
+function showScore(){
+ document.getElementById("score").innerHTML = "Your Score Is "+url.replace("http://127.0.0.1:5500/quizBlaster/mq-goodbye-page.html?","");
+}
+    
 </script>
 </html>
