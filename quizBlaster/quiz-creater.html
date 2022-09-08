@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<title>Math Quiz</title>
+<link rel="icon" type="image/x-icon" href="favicon (1).ico">
+<link rel="stylesheet" href="style.css">
+<style>
+</style>
+</head>
+<body>
+  <div id="page">
+    <div id="pagehead" class="pagehead">Create Your Quiz</div>
+    <div class="content">
+      <div>
+        <form action="" onsubmit="return saveQuizName()">
+          <input type="text" id="quiz-name" placeholder="Quiz Name"/>
+          <button type="submit">Add Quiz Name</button>
+        </form>
+      </div>
+      <div id="quiz">
+        <form action="" onsubmit="return saveQuizQuestion()">
+          <input type="text" id="quiz-question" placeholder="Quiz Question" required/>
+          <input type="text" id="quiz-coorect-answer"  placeholder="Quiz Correct Answer" required/>
+          <button type="submit">Add Question</button>
+        </form>
+      </div>
+     <div>
+      <div id="quizName"></div>
+      <div id="quizQuestions"></div>
+      <button type="button" onclick="clearAllQuestions()">Clear Quiz</button>
+     </div>
+    </div>
+  </div>
+</body>
+<script>
+const quizTemplate = {
+  quizName: "",
+  questions:[]
+}
+
+function saveQuizName(){
+  const quizName=document.getElementById("quiz-name").value
+  quizTemplate.quizName = quizName
+  document.getElementById("quizName").innerHTML = quizName
+  return false;
+}
+
+function saveQuizQuestion(){
+  const quizQuestion=document.getElementById("quiz-question").value
+  const quizCorrectAnswer=document.getElementById("quiz-coorect-answer").value
+  
+  quizTemplate.questions.push({question:quizQuestion, corectAnswer:quizCorrectAnswer})
+  console.log(quizTemplate)
+
+  /*document.getElementById("quizQuestions").innerHTML += `<div>${quizQuestion}</div><div>${quizCorrectAnswer}</div>`*/
+
+  document.getElementById("quiz-question").value = ""
+  document.getElementById("quiz-coorect-answer").value = ""
+  showQuiz();
+  return false;
+}
+
+function showQuiz(){
+  document.getElementById("quizQuestions").innerHTML ="";
+
+  for(i=0;i<quizTemplate.questions.length;i++){
+
+    document.getElementById("quizQuestions").innerHTML += `
+    <div>
+      <div>${i+1}</div>
+      <div>${quizTemplate.questions[i].question}</div>
+      <div>${quizTemplate.questions[i].corectAnswer}</div>
+      <button onclick="clearQuestion(${i})">Clear</button>
+    </div>
+    `
+  }
+}
+
+function clearAllQuestions(){
+  quizTemplate.questions=[]
+  showQuiz();
+}
+
+function clearQuestion(qIndex){
+  quizTemplate.questions.splice(qIndex,1)
+  showQuiz();
+}
+
+</script>
+</html>
