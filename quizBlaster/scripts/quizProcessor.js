@@ -1,3 +1,4 @@
+document.getElementById("pagehead").innerHTML = quiz.name
 let currentQuestionIndex = -1;
 let score = 0;
 nextQuestion();
