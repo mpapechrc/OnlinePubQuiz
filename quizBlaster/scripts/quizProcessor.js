@@ -28,8 +28,10 @@ function scoreTracker(){
   if (userAnswer === correctAnswer) {
     score++
     document.getElementById(currentQuestionIndex).style.backgroundColor = "green";
-  }
-  document.getElementById("message").innerHTML= "Broj bodova " + score
+  }else{
+  document.getElementById("message").innerHTML= "Broj bodova " + score;
+  document.getElementById(currentQuestionIndex).style.backgroundColor = "red";
+}
 }
 
 function questionVisualizer(){
