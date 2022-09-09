@@ -15,21 +15,11 @@
         <div>
         </div>
         <div>
-            <div>
-                <p><b>Enter Your Blast Name</b></p>
-            </div>
-            <div>
-                <input id="name" type="text">
-            </div>
-            <div>
-                <p><b>Enter Your Secret Blast Word</b></p>
-            </div>
-            <div>
-                <input  type="password" id="pass" type="text">
-            </div>
-            <div>
-                <button id="blaster" type="button" onclick="user()"><b>Let's Blast</b></button>
-            </div>  
+            <form action="" onsubmit="return login()">
+                <input type="text" id="username" placeholder="Enter User Name" required>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <button type="submit" id="login-button">Blast It</button>
+            </form> 
         </div>
         <div>
         </div>
@@ -37,9 +27,10 @@
 </body>
 <script>
  
- function user(){
-    let x = document.getElementById("name").value
+ function login(){
+    let x = document.getElementById("username").value
     window.open("qb-menu.html?user="+x,"_self")
+    return false;
  }
 </script>
 </html> 

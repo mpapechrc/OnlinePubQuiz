@@ -25,7 +25,7 @@
         </form>
       </div>
      <div>
-      <div id="quizName"></div>
+      <div id="quizName" class="quizName"></div>
       <div id="quizQuestions"></div>
       <button type="button" onclick="clearAllQuestions()">Clear Quiz</button>
      </div>
@@ -33,14 +33,20 @@
   </div>
 </body>
 <script>
-const quizTemplate = {
-  quizName: "",
+let quizTemplate = {
+  name: "",
   questions:[]
+}
+
+const loadedQuiz = localStorage.getItem("quiz")
+if (loadedQuiz) {
+  quizTemplate = JSON.parse(loadedQuiz)
+  showQuiz()
 }
 
 function saveQuizName(){
   const quizName=document.getElementById("quiz-name").value
-  quizTemplate.quizName = quizName
+  quizTemplate.name = quizName
   document.getElementById("quizName").innerHTML = quizName
   return false;
 }
@@ -51,8 +57,6 @@ function saveQuizQuestion(){
   
   quizTemplate.questions.push({question:quizQuestion, corectAnswer:quizCorrectAnswer})
   console.log(quizTemplate)
-
-  /*document.getElementById("quizQuestions").innerHTML += `<div>${quizQuestion}</div><div>${quizCorrectAnswer}</div>`*/
 
   document.getElementById("quiz-question").value = ""
   document.getElementById("quiz-coorect-answer").value = ""
@@ -66,14 +70,15 @@ function showQuiz(){
   for(i=0;i<quizTemplate.questions.length;i++){
 
     document.getElementById("quizQuestions").innerHTML += `
-    <div>
+    <div class="questionList">
       <div>${i+1}</div>
       <div>${quizTemplate.questions[i].question}</div>
-      <div>${quizTemplate.questions[i].corectAnswer}</div>
-      <button onclick="clearQuestion(${i})">Clear</button>
+      <div>${quizTemplate.questions[i].correctAnswer}</div>
+      <div><button onclick="clearQuestion(${i})">Clear</button></div>
     </div>
     `
   }
+  localStorage.setItem("quiz", JSON.stringify(quizTemplate))
 }
 
 function clearAllQuestions(){

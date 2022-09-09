@@ -1,4 +1,5 @@
 document.getElementById("pagehead").innerHTML = quiz.name
+questionVisualizer()
 let currentQuestionIndex = -1;
 let score = 0;
 nextQuestion();
@@ -26,8 +27,19 @@ function scoreTracker(){
   let correctAnswer = quiz.questions[currentQuestionIndex].correctAnswer
   if (userAnswer === correctAnswer) {
     score++
+    document.getElementById(currentQuestionIndex).style.backgroundColor = "green";
   }
   document.getElementById("message").innerHTML= "Broj bodova " + score
+}
+
+function questionVisualizer(){
+  const questionNo = quiz.questions.length
+  for(i=0;i<questionNo;i++){
+    document.getElementById("questionVisualizer").innerHTML +=`
+    <div id="${i}">${i+1}</div>
+    `
+  }
+  return false;
 }
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
