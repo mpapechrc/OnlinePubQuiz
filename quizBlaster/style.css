@@ -89,6 +89,8 @@ button:active{
     border-radius: 20px;
 }
 .questionVisualizer{
+    border-radius: 20px;
+    margin: 10px;
     border-style: solid;
     display: flex;
     justify-content: center;
