@@ -1,11 +1,13 @@
 document.getElementById("pagehead").innerHTML = quiz.name
 questionVisualizer()
+answerVisualizer()
 let currentQuestionIndex = -1;
 let score = 0;
 nextQuestion();
 
 function submitAnswer() {
   scoreTracker()
+  answerVisualizer()
   nextQuestion()
   return false
 }
@@ -27,11 +29,12 @@ function scoreTracker(){
   let correctAnswer = quiz.questions[currentQuestionIndex].correctAnswer
   if (userAnswer === correctAnswer) {
     score++
-    document.getElementById(currentQuestionIndex).style.backgroundColor = "green";
+    quiz.questions[currentQuestionIndex].outcome = "correct";
   }else{
   document.getElementById("message").innerHTML= "Broj bodova " + score;
-  document.getElementById(currentQuestionIndex).style.backgroundColor = "red";
+  quiz.questions[currentQuestionIndex].outcome = "wrong";
 }
+console.log(quiz)
 }
 
 function questionVisualizer(){
@@ -43,6 +46,19 @@ function questionVisualizer(){
   }
   return false;
 }
+
+function answerVisualizer(){
+  for ( let i = 0; i<quiz.questions.length; i++){
+    if(quiz.questions[i].outcome === "correct"){
+        document.getElementById(i).style.backgroundColor = "green";}
+    else if(quiz.questions[i].outcome === "wrong"){
+      document.getElementById(i).style.backgroundColor = "red";}
+    else{
+      document.getElementById(i).style.backgroundColor = "aliceblue";
+    }
+    }   
+}
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const user = urlParams.get('user')
