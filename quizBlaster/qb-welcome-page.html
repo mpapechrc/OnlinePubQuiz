@@ -39,7 +39,7 @@ if(userData){
 
 function registrate(){
 if (userAlredyExists()) {
-        return false;
+    return false;
 }
  createUser()
  login()
@@ -66,9 +66,7 @@ function userAlredyExists(){
 
     for(i=0;i<users.credentials.length;i++){
        if (users.credentials[i].user===username && users.credentials[i].secretWord===password) {
-        window.alert("This Combination Already Exist's")
         document.getElementById("1").innerHTML="This Combination Already Exist's";
-        throw new Error("This Combination Already Exist's")
         return true
        } 
     }
