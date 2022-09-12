@@ -15,7 +15,7 @@
         <div>
         </div>
         <div>
-            <form action="" onsubmit="return login()">
+            <form action="" onsubmit="return registrate()">
                 <input type="text" id="username" placeholder="Enter User Name" required>
                 <input type="password" id="password" placeholder="Enter Password" required>
                 <button type="submit" id="login-button">Blast It</button>
@@ -26,11 +26,34 @@
     </div>
 </body>
 <script>
+
+let users = {
+    credentials:[]
+}
+
+const userData = localStorage.getItem("userBase")
+if(userData){
+ users = JSON.parse(userData)
+}
+
+function registrate(){
+ createUser()
+ login()
+ return false;
+}
+
+function createUser(){
+ const username = document.getElementById("username").value
+ const password = document.getElementById("password").value
  
- function login(){
-    let x = document.getElementById("username").value
-    window.open("qb-menu.html?user="+x,"_self")
-    return false;
- }
+ users.credentials.push({user:username, secretWord:password})
+ console.log(users)
+ localStorage.setItem("userBase", JSON.stringify(users))
+}
+
+function login(){
+    let username = document.getElementById("username").value
+    window.open("qb-menu.html?user="+username,"_self")
+}
 </script>
 </html> 
