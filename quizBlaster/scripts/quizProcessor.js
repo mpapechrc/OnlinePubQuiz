@@ -30,6 +30,7 @@ function scoreTracker(){
   if (userAnswer === correctAnswer) {
     score++
     quiz.questions[currentQuestionIndex].outcome = "correct";
+    document.getElementById("message").innerHTML= "Broj bodova " + score;
   }else{
   document.getElementById("message").innerHTML= "Broj bodova " + score;
   quiz.questions[currentQuestionIndex].outcome = "wrong";
