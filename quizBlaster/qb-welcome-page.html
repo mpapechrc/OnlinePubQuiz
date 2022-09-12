@@ -15,7 +15,7 @@
         <div>
         </div>
         <div>
-            <form action="" onsubmit="return registrate()">
+            <form action="" onsubmit="return checkCredentials();return registrate()">
                 <input type="text" id="username" placeholder="Enter User Name" required>
                 <input type="password" id="password" placeholder="Enter Password" required>
                 <button type="submit" id="login-button">Blast It</button>
@@ -24,6 +24,7 @@
         <div>
         </div>
     </div>
+    <div id="1"></div>
 </body>
 <script>
 
@@ -54,6 +55,20 @@ function createUser(){
 function login(){
     let username = document.getElementById("username").value
     window.open("qb-menu.html?user="+username,"_self")
+}
+
+function checkCredentials(){
+    const username = document.getElementById("username").value
+    const password = document.getElementById("password").value
+
+    for(i=0;i<users.credentials.length;i++){
+       if (users.credentials[i].user===username && users.credentials[i].secretWord===password) {
+        window.alert("This Combination Already Exist's")
+        document.getElementById("1").innerHTML="This Combination Already Exist's";
+        throw new Error("This Combination Already Exist's")
+       } 
+    }
+    return false
 }
 </script>
 </html> 
