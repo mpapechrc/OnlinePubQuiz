@@ -62,10 +62,9 @@ function login(){
 
 function userAlredyExists(){
     const username = document.getElementById("username").value
-    const password = document.getElementById("password").value
 
     for(i=0;i<users.credentials.length;i++){
-       if (users.credentials[i].user===username && users.credentials[i].secretWord===password) {
+       if (users.credentials[i].user===username) {
         document.getElementById("1").innerHTML="This Combination Already Exist's";
         return true
        } 
