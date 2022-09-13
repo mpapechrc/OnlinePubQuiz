@@ -13,15 +13,16 @@
     </div>
     <div class="content">
         <div>
-            <button type="button">Create Account</button>
-            <button type="button">Log In</button>
         </div>
-        <div>
+        <div id="2">
             <form action="" onsubmit="return logIn()">
                 <input type="text" id="username" placeholder="Enter User Name" required>
                 <input type="password" id="password" placeholder="Enter Password" required>
                 <button type="submit" id="login-button">Blast It</button>
-            </form> 
+            </form>
+            <div>
+                <button type="button" onclick="registerForm()">Create Account</button>
+            </div>
         </div>
         <div>
         </div>
@@ -37,6 +38,16 @@ let users = {
 const userData = localStorage.getItem("userBase")
 if(userData){
  users = JSON.parse(userData)
+}
+/*login page*/
+function registerForm(){
+document.getElementById("2").innerHTML=`
+            <form action="" onsubmit="return registrate()">
+                <input type="text" id="username" placeholder="New User Name" required>
+                <input type="password" id="password" placeholder="New Password" required>
+                <button type="submit" id="login-button">Blast It</button>
+            </form> 
+`
 }
 
 function logIn(){
@@ -64,5 +75,42 @@ function userAlredyExists(){
     }
     return true
 }
+
+/*register script*/
+function registrate(){
+if (userNameAlredyExists()) {
+    return false;
+}
+ createUser()
+ login()
+ return false;
+}
+
+function createUser(){
+ const username = document.getElementById("username").value
+ const password = document.getElementById("password").value
+ 
+ users.credentials.push({user:username, secretWord:password})
+ console.log(users)
+ localStorage.setItem("userBase", JSON.stringify(users))
+}
+
+function login(){
+    let username = document.getElementById("username").value
+    window.open("home.html?user="+username,"_self")
+}
+
+function userNameAlredyExists(){
+    const username = document.getElementById("username").value
+
+    for(i=0;i<users.credentials.length;i++){
+       if (users.credentials[i].user===username) {
+        document.getElementById("1").innerHTML="This Combination Already Exist's";
+        return true
+       } 
+    }
+    return false
+}
+
 </script>
 </html> 
