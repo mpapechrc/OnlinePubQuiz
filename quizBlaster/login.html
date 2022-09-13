@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title>Quiz Baster</title>
+    <link rel="icon" type="image/x-icon" href="favicon (1).ico">
+    <link rel="stylesheet" href="style.css">
+<style>
+</style>
+</head>
+<body>
+    <div class="pagehead">
+        <h1>Welcome to the QuizBlaster</h1>
+    </div>
+    <div class="content">
+        <div>
+            <button type="button">Create Account</button>
+            <button type="button">Log In</button>
+        </div>
+        <div>
+            <form action="" onsubmit="return logIn()">
+                <input type="text" id="username" placeholder="Enter User Name" required>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <button type="submit" id="login-button">Blast It</button>
+            </form> 
+        </div>
+        <div>
+        </div>
+    </div>
+    <div id="1"></div>
+</body>
+<script>
+
+let users = {
+    credentials:[]
+}
+
+const userData = localStorage.getItem("userBase")
+if(userData){
+ users = JSON.parse(userData)
+}
+
+function logIn(){
+ if (userAlredyExists()) {
+ return true;
+}
+ homePage()
+ return false;
+}
+
+function homePage(){
+    let username = document.getElementById("username").value
+    window.open("home.html?user="+username,"_self")
+}
+
+function userAlredyExists(){
+    const username = document.getElementById("username").value
+    const password = document.getElementById("password").value
+
+    for(i=0;i<users.credentials.length;i++){
+       if (users.credentials[i].user===username && users.credentials[i].secretWord===password) {
+        console.log(i)
+        return false;
+       }
+    }
+    return true
+}
+</script>
+</html> 
