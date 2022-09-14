@@ -107,13 +107,9 @@ function refresh(){
 }
 
 function saveQuiz(){
-  const Name = quiz.name
-  const Body = quiz.questions
-  const NameBase = JSON.stringify(Name)
-  const BodyBase = JSON.stringify(Body)
-  quizBase.push({quizName:NameBase, quizBody:BodyBase})
+  quizBase.push(quiz)
   console.log(quizBase)
-  localStorage.setItem("quizBase", quizBase)
+  localStorage.setItem("quizBase", JSON.stringify(quizBase))
 }
 
 </script>
