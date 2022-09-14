@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<title>Math Quiz</title>
+<link rel="icon" type="image/x-icon" href="favicon (1).ico">
+<link rel="stylesheet" href="style.css">
+<style>
+.questions-block{
+  border: solid;
+  margin: 10px 0;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+  <div id="page">
+    <div id="pagehead" class="pagehead">Create Your Quiz</div>
+    <div class="content">
+      <div></div>
+      <div id="quiz">
+        <div>
+        <form action="">
+          <input type="text" id="quiz-name" onchange="return saveQuizName()" placeholder="Quiz Name">
+        </form>
+        </div>
+        <div id="questions-block" class="questions-block">
+        </div>
+        <div>
+          <button type="button" onclick="addQuestion()">Add Question</button>
+          <button type="button" onclick="saveQuiz()">Save Quiz</button>
+        </div>
+      </div>
+     <div></div>
+    </div>
+  </div>
+</body>
+<script>
+let quiz={
+  name:"",
+  questions:[]
+}
+
+let quizBase =[]
+
+
+const loadedQuiz = localStorage.getItem("quiz")
+if (loadedQuiz) {
+  quiz = JSON.parse(loadedQuiz)
+  refresh()
+}
+
+function saveQuizName(){
+  const quizname = document.getElementById("quiz-name").value
+  quiz.name = quizname
+  refresh()
+  console.log(quiz)
+  return false
+}
+
+function saveQuestion(questionID, i){
+  const question = document.getElementById(questionID).value
+  quiz.questions[i].question = question
+  refresh()
+  console.log(quiz)
+  return false
+}
+
+function saveAnswer(answerID, i){
+  const answer = document.getElementById(answerID).value
+  quiz.questions[i].answer = answer
+  refresh()
+  console.log(quiz)
+  return false
+}
+
+function deleteQuestion(questionIndex){
+
+  quiz.questions.splice(questionIndex,1)
+  refresh()
+  console.log(quiz)
+  return false
+}
+
+function addQuestion(){
+  quiz.questions.push({question:"",answer:""})
+  refresh()
+  console.log(quiz)
+}
+
+function refresh(){
+  document.getElementById("questions-block").innerHTML=""
+  for (let i = 0; i < quiz.questions.length; i++) {
+    let questionID = "question"+i;
+    let answerID = "answer"+i;
+    document.getElementById("questions-block").innerHTML+=`
+        <div id="question-block-${i}">
+          <form action="" id="question-input-${i}" onsubmit="return deleteQuestion(${i})">
+            <h1>Question#${i+1}</h1>
+            <input type="text" id="${questionID}" onchange="return saveQuestion(${questionID},${i})" placeholder="Question">
+            <input type="text" id="${answerID}" onchange="return saveAnswer(${answerID},${i})" placeholder="Answer">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+  `
+  }
+  localStorage.setItem("quiz", JSON.stringify(quiz))
+}
+
+function saveQuiz(){
+  const Name = quiz.name
+  const Body = quiz.questions
+  const NameBase = JSON.stringify(Name)
+  const BodyBase = JSON.stringify(Body)
+  quizBase.push({quizName:NameBase, quizBody:BodyBase})
+  console.log(quizBase)
+  localStorage.setItem("quizBase", quizBase)
+}
+
+</script>
+</html>
