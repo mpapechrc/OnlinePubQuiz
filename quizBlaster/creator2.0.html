@@ -96,8 +96,8 @@ function refresh(){
         <div id="question-block-${i}">
           <form action="" id="question-input-${i}" onsubmit="return deleteQuestion(${i})">
             <h1>Question#${i+1}</h1>
-            <input type="text" id="${questionID}" onchange="return saveQuestion('${questionID}',${i})" placeholder="Question">
-            <input type="text" id="${answerID}" onchange="return saveAnswer('${answerID}',${i})" placeholder="Answer">
+            <input type="text" id="${questionID}" onchange="return saveQuestion('${questionID}',${i})" placeholder="Question" value="${quiz.questions[i].question}">
+            <input type="text" id="${answerID}" onchange="return saveAnswer('${answerID}',${i})" placeholder="Answer" value="${quiz.questions[i].answer}">
             <button type="submit">Delete</button>
           </form>
         </div>
