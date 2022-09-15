@@ -35,6 +35,12 @@
   </div>
 </body>
 <script>
+ const queryString = window.location.search;
+ const urlParams = new URLSearchParams(queryString);
+ const quizName = urlParams.get('quiz')
+console.log(quizName)
+
+
 let quiz={
   name:"",
   questions:[]
@@ -42,12 +48,34 @@ let quiz={
 
 let quizBase =[]
 
+const loadedQuizBase = localStorage.getItem("quizBase")
+if (loadedQuizBase) {
+  quizBase = JSON.parse(loadedQuizBase)
+}
 
-const loadedQuiz = localStorage.getItem("quiz")
+let curentQuizIndex;
+
+quizBase.forEach((q,i)=>{
+  if(quizName==q.name){
+    quiz=q
+    curentQuizIndex=i;
+  }
+})
+
+quizBase.forEach((x)=>{
+  x.questions.forEach((y)=>{
+    console.log(y.question)
+  })
+}
+)
+
+
+refresh()
+/*const loadedQuiz = localStorage.getItem("quiz")
 if (loadedQuiz) {
   quiz = JSON.parse(loadedQuiz)
   refresh()
-}
+}*/
 
 function saveQuizName(){
   const quizname = document.getElementById("quiz-name").value
@@ -88,6 +116,7 @@ function addQuestion(){
 }
 
 function refresh(){
+  document.getElementById("quiz-name").value = quiz.name
   document.getElementById("questions-block").innerHTML=""
   for (let i = 0; i < quiz.questions.length; i++) {
     let questionID = "question"+i;
@@ -107,9 +136,17 @@ function refresh(){
 }
 
 function saveQuiz(){
-  quizBase.push(quiz)
+  saveQuizToQuizBase()
   console.log(quizBase)
   localStorage.setItem("quizBase", JSON.stringify(quizBase))
+}
+
+function saveQuizToQuizBase() {
+  if(curentQuizIndex){
+    quizBase[curentQuizIndex]==quiz
+    return
+  }
+  quizBase.push(quiz)
 }
 
 </script>
