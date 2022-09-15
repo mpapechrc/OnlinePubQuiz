@@ -35,6 +35,7 @@
   </div>
 </body>
 <script>
+  
 let quiz={
   name:"",
   questions:[]
@@ -49,6 +50,12 @@ if (loadedQuiz) {
   refresh()
 }
 
+const loadedQuizBase = localStorage.getItem("quizBase")
+if (loadedQuizBase) {
+  quizBase = JSON.parse(loadedQuizBase)
+  refresh()
+}
+console.log(quizBase)
 function saveQuizName(){
   const quizname = document.getElementById("quiz-name").value
   quiz.name = quizname
@@ -107,9 +114,16 @@ function refresh(){
 }
 
 function saveQuiz(){
+  for(let i = 0;i<quizBase.length; i++){
+    if (quiz.name ===quizBase[i].name) {
+      return false
+    }else{
+      return true
+    }
+  }
   quizBase.push(quiz)
-  console.log(quizBase)
   localStorage.setItem("quizBase", JSON.stringify(quizBase))
+  window.location.reload()
 }
 
 </script>
