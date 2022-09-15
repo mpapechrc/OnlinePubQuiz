@@ -10,8 +10,8 @@
 <body>
 <div id="pagehead" class="pagehead"></div>
 <div class="content">
-    <div>
-       <button id="blaster" type="button" onclick="window.location='mq-welcome-page.html?user='+user;"><b>Math Quiz</b></button>
+    <div id ="1">
+
     </div>
     <div>
         <button id="blaster" type="button" onclick="window.location='';"><b>Yes/No Quiz</b></button>
@@ -20,11 +20,19 @@
         <button id="blaster" type="button" onclick="window.location='';"><b>Select Correct Answer Quiz</b></button>
     </div>
     <div>
-        <button id="blaster" type="button" onclick="window.location='quiz-creater.html';"><b>Create Quiz</b></button>
+        <button id="blaster" type="button" onclick="window.location='creator2.0.html';"><b>Create Quiz</b></button>
     </div>
 </div>
 </body>
 <script>
+
+let quizBase1 = JSON.parse(localStorage.getItem("quizBase"))
+quizBase1.forEach((x)=>{
+    document.getElementById("1").innerHTML+=`
+    <button id="blaster" type="button" onclick="window.location='creator2.0.html?user='+user+'&quiz=${x.name}';"><b>${x.name}(${x.questions.length})</b></button>
+    `
+});
+
  const queryString = window.location.search;
  const urlParams = new URLSearchParams(queryString);
  const user = urlParams.get('user')
