@@ -10,11 +10,14 @@
 <body>
 <div id="pagehead" class="pagehead"></div>
 <div id="content" class="content"></div>
-<div class="creator-button"><button id="blaster" type="button" onclick="window.location='creator2.0.html';"><b>Create Quiz</b></button></div>
+<div class="creator-button"><button id="blaster" type="button" onclick="window.location='creator2.0.html?user='+user"><b>Create Quiz</b></button></div>
 </body>
 <script>
 
+
 let quizBase1 = JSON.parse(localStorage.getItem("quizBase"))
+
+console.log(quizBase1)
 quizBase1.forEach((x)=>{
     document.getElementById("content").innerHTML+=`
     <div class="quiz-preview">
@@ -22,6 +25,7 @@ quizBase1.forEach((x)=>{
         <div class="quiz-preview-buttons">
         <button id="blaster" type="button" onclick="window.location='creator2.0.html?user='+user+'&quiz=${x.name}';"><b>Edit</b></button>
         <button id="blaster" type="button" onclick="window.location='play.html?user='+user+'&quiz=${x.name}';"><b>Play</b></button>
+        <button id="blaster" type="button" onclick="deleteQuiz(${x.name})"><b>Delete</b></button>
         <div>
     </div>
     `
@@ -32,5 +36,12 @@ quizBase1.forEach((x)=>{
  const user = urlParams.get('user')
  document.getElementById("pagehead").innerHTML = user + " Welcome To The QuizBlaster"
  
+function deleteQuiz(quizName){
+    quizBase1.forEach((quiz,i)=>{
+        if(quizName===quiz.name){
+            quizBase1.splice(i,1)
+        }
+    })
+}
 </script>
 </html> 

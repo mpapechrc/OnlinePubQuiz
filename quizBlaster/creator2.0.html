@@ -38,6 +38,7 @@
  const queryString = window.location.search;
  const urlParams = new URLSearchParams(queryString);
  const quizName = urlParams.get('quiz')
+ const user = urlParams.get('user')
 console.log(quizName)
 
 
@@ -139,6 +140,7 @@ function saveQuiz(){
   saveQuizToQuizBase()
   console.log(quizBase)
   localStorage.setItem("quizBase", JSON.stringify(quizBase))
+  window.location="home.html?user="+user
 }
 
 function saveQuizToQuizBase() {
