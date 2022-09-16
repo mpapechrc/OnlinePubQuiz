@@ -1,3 +1,27 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const user = urlParams.get('user')
+const quizName = urlParams.get('quiz')
+console.log(quizName)
+
+let quiz={
+  name:"",
+  questions:[]
+}
+
+let quizBase =[]
+
+const loadedQuizBase = localStorage.getItem("quizBase")
+if (loadedQuizBase) {
+  quizBase = JSON.parse(loadedQuizBase)
+}
+
+quizBase.forEach((x,i) => {
+  if (x.name==quizName) {
+    quiz=quizBase[i]
+  }
+});
+
 document.getElementById("pagehead").innerHTML = quiz.name
 questionVisualizer()
 answerVisualizer()
@@ -26,8 +50,8 @@ function nextQuestion(){
 
 function scoreTracker(){
   let userAnswer = document.getElementById("answerInput").value
-  let correctAnswer = quiz.questions[currentQuestionIndex].correctAnswer
-  if (userAnswer === correctAnswer) {
+  let answer = quiz.questions[currentQuestionIndex].answer
+  if (userAnswer === answer) {
     score++
     quiz.questions[currentQuestionIndex].outcome = "correct";
     document.getElementById("message").innerHTML= "Broj bodova " + score;
@@ -60,6 +84,4 @@ function answerVisualizer(){
     }   
 }
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const user = urlParams.get('user')
+
