@@ -7,7 +7,7 @@ function quizTemp(){
         <div id="question"></div>
         <div>
             <form name="answer-form" action="" onsubmit="return submitAnswer()">
-                <input id="answerInput" type="number" name="answer" placeholder="Answer Here"></input>
+                <input id="answerInput" type="text" name="answer" placeholder="Answer Here"></input>
                 <button id="button" type="submit" aria-placeholder="asdasd">Blast It</button>
             </form>
         </div>

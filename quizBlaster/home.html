@@ -9,27 +9,21 @@
 </head>
 <body>
 <div id="pagehead" class="pagehead"></div>
-<div class="content">
-    <div id ="1">
-
-    </div>
-    <div>
-        <button id="blaster" type="button" onclick="window.location='';"><b>Yes/No Quiz</b></button>
-    </div>
-    <div>
-        <button id="blaster" type="button" onclick="window.location='';"><b>Select Correct Answer Quiz</b></button>
-    </div>
-    <div>
-        <button id="blaster" type="button" onclick="window.location='creator2.0.html';"><b>Create Quiz</b></button>
-    </div>
-</div>
+<div id="content" class="content"></div>
+<div class="creator-button"><button id="blaster" type="button" onclick="window.location='creator2.0.html';"><b>Create Quiz</b></button></div>
 </body>
 <script>
 
 let quizBase1 = JSON.parse(localStorage.getItem("quizBase"))
 quizBase1.forEach((x)=>{
-    document.getElementById("1").innerHTML+=`
-    <button id="blaster" type="button" onclick="window.location='creator2.0.html?user='+user+'&quiz=${x.name}';"><b>${x.name}(${x.questions.length})</b></button>
+    document.getElementById("content").innerHTML+=`
+    <div class="quiz-preview">
+        <div><b>${x.name}(${x.questions.length})</b></div>
+        <div class="quiz-preview-buttons">
+        <button id="blaster" type="button" onclick="window.location='creator2.0.html?user='+user+'&quiz=${x.name}';"><b>Edit</b></button>
+        <button id="blaster" type="button" onclick="window.location='play.html?user='+user+'&quiz=${x.name}';"><b>Play</b></button>
+        <div>
+    </div>
     `
 });
 
