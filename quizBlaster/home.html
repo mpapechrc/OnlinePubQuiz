@@ -14,11 +14,18 @@
 </body>
 <script>
 
+let quizBase =[]
 
-let quizBase1 = JSON.parse(localStorage.getItem("quizBase"))
+const loadedQuizBase = localStorage.getItem("quizBase")
+if (loadedQuizBase) {
+  quizBase = JSON.parse(loadedQuizBase)
+}
+display()
 
-console.log(quizBase1)
-quizBase1.forEach((x)=>{
+console.log(quizBase)
+
+function display(){
+    quizBase.forEach((x)=>{
     document.getElementById("content").innerHTML+=`
     <div class="quiz-preview">
         <div><b>${x.name}(${x.questions.length})</b></div>
@@ -29,7 +36,10 @@ quizBase1.forEach((x)=>{
         <div>
     </div>
     `
-});
+}); 
+}
+
+
 
  const queryString = window.location.search;
  const urlParams = new URLSearchParams(queryString);
@@ -37,12 +47,13 @@ quizBase1.forEach((x)=>{
  document.getElementById("pagehead").innerHTML = user + " Welcome To The QuizBlaster"
  
 function deleteQuiz(quizName){
-    quizBase1.forEach((quiz,i)=>{
-        if(quizName===quiz.name){
-            quizBase1.splice(i,1)
-            localStorage.setItem("quizBase",quizBase1)
+    quizBase.forEach((quiz,i)=>{
+        if(quizName===quizBase.name){
+            quizBase.splice(i,1)
+            localStorage.setItem("quizBase",quizBase)
         }
     })
+    display()
 }
 </script>
 </html> 
