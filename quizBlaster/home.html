@@ -25,6 +25,7 @@ display()
 console.log(quizBase)
 
 function display(){
+    document.getElementById("content").innerHTML=''
     quizBase.forEach((x)=>{
     document.getElementById("content").innerHTML+=`
     <div class="quiz-preview">
@@ -32,7 +33,7 @@ function display(){
         <div class="quiz-preview-buttons">
         <button id="blaster" type="button" onclick="window.location='creator2.0.html?user='+user+'&quiz=${x.name}';"><b>Edit</b></button>
         <button id="blaster" type="button" onclick="window.location='play.html?user='+user+'&quiz=${x.name}';"><b>Play</b></button>
-        <button id="blaster" type="button" onclick="deleteQuiz(${x.name})"><b>Delete</b></button>
+        <button id="blaster" type="button" onclick="deleteQuiz('${x.name}')"><b>Delete</b></button>
         <div>
     </div>
     `
@@ -48,9 +49,9 @@ function display(){
  
 function deleteQuiz(quizName){
     quizBase.forEach((quiz,i)=>{
-        if(quizName===quizBase.name){
+        if(quizName===quiz.name){
             quizBase.splice(i,1)
-            localStorage.setItem("quizBase",quizBase)
+            localStorage.setItem("quizBase",JSON.stringify(quizBase))
         }
     })
     display()
